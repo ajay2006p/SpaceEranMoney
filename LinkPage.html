@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="Linkpage.css">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Page Earn</title>
+</head>
+
+<body>
+  <div class="head">
+    <a href="profile.html"><img src="/images/Pro1.png" id="profileImg" alt="Profile"></a>
+    <p>Your Balance</p>
+    <h1 id="balance">₹1000.0</h1>
+    <h3>Clicks Count</h3>
+    <h2 id="clicks">224</h2>
+  </div>
+
+  <h1>Earn</h1>
+
+  <div class="box">
+    <p>How To Earn?</p>
+    <a href="vido.html"><div class="box2">Click Here</div></a>
+  </div>
+
+  <div class="contain">
+    <a href="clickpage.html" target="_blank"><div class="Link">
+      <h2>Everyday Task 1</h2>
+      <h4>Click-Open and Earn</h4>
+      <p>₹0.50</p>
+    </div></a>
+
+    <a href="task2.html">  <div  class="Link" style="border: solid rgb(1, 255, 1) 2px; border-left: 15px solid rgb(1, 255, 1);">
+      <h2>Everyday Task 2</h2>
+      <h4>Click-Open and Earn</h4>
+      <p>₹1</p></a> 
+    </div>
+
+    <div class="Link" style="border: solid rgb(191,64,191) 2px; border-left: 15px solid rgb(191,64,191);">
+      <h2>Everyday Task 3</h2>
+      <h4>Click-Open and Earn</h4>
+      <p>₹0.50</p>
+    </div>
+
+    <div class="Link" style="border: solid #FF5733 2px; border-left: 15px solid #FF5733;">
+      <h2>Everyday Task 4</h2>
+      <h4>Click-Open and Earn</h4>
+      <p>₹0.50</p>
+    </div>
+
+    <div class="Link" style="border: solid rgb(1, 255, 1) 2px; border-left: 15px solid rgb(1, 255, 1);">
+      <h2>Everyday Task 5</h2>
+      <h4>Click-Open and Earn</h4>
+      <p>₹0.50</p>
+    </div>
+
+    <div class="Link">
+      <h2>Everyday Task 6</h2>
+      <h4>Click-Open and Earn</h4>
+      <p>₹0.50</p>
+    </div>
+
+    <div class="Link" style="border: solid rgb(191,64,191) 2px; border-left: 15px solid rgb(191,64,191);">
+      <h2>Everyday Task 7</h2>
+      <h4>Click-Open and Earn</h4>
+      <p>₹0.50</p>
+    </div>
+  </div>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database-compat.js"></script>
+
+  <!-- Firebase Integration Script -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBOASGBeUx9WtencQSpHxIuVYROCIg5yGg",
+      authDomain: "eran-money-34265.firebaseapp.com",
+      databaseURL: "https://eran-money-34265-default-rtdb.firebaseio.com",
+      projectId: "eran-money-34265",
+      storageBucket: "eran-money-34265.appspot.com",
+      messagingSenderId: "823464354489",
+      appId: "1:823464354489:web:72ae96a89d0356b721f168"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    const auth = firebase.auth();
+    const database = firebase.database();
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        const userRef = database.ref("users/" + user.uid);
+
+        userRef.on("value", snapshot => {
+          const data = snapshot.val();
+          if (data) {
+            document.getElementById("balance").textContent = `₹${Number(data.balance).toFixed(2)}`;
+            document.getElementById("clicks").textContent = data.clicks || 0;
+
+            // Set profile image from localStorage if exists
+            const storedImg = localStorage.getItem("profileImg");
+            if (storedImg) {
+              document.getElementById("profileImg").src = storedImg;
+            }
+          }
+        });
+
+      } else {
+        window.location.href = "index.html"; // Redirect if not logged in
+      }
+    });
+  </script>
+</body>
+</html>

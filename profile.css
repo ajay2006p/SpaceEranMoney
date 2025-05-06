@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+{
+  font-family:Arial;
+  color:black;
+}
+.your_pro{
+  background-color:#a259ff;
+  border-radius: 8px 8px 0px 0px;
+  color:white;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 80px;
+}
+.info{
+  background-color:white;
+  height:100%;
+  border-radius: 15px 15px 0px 0px;
+  
+  
+}
+.back{
+  
+}
+.yp{
+  height: 30px;
+  position: relative;
+  top:60px;
+  padding-left: 14px;
+}
+.pic_div{
+  height: 220px;
+  color: red;
+  position: relative;
+  top:10px;
+  display: flex;
+  align-items: center;
+  gap: 22%;
+  flex-direction: column;
+  
+  
+  
+}
+.pic{
+  background-color:;
+  height: 120px;
+  width: 120px;
+  position: relative;
+  top:25px;
+  border-radius: 50%;
+}
+.pic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border: 3px solid #a259ff;
+  border-radius: 50%;
+  
+}
+.pic_name{
+  color:#a259ff;
+  font-size: 25px;
+  
+  
+  
+}
+.info_get{
+  color:black;
+  position: relative;
+  top:40px;
+  height: 500px;
+  
+}
+.info_get input{
+  width: 97%;
+  height: 45px;
+  border-radius: 10px;
+  position: relative;
+  background-color: whitesmoke;
+  margin-left: 2%;
+  margin-right: 2%;
+  text-align: center;
+  margin-top: 2%;
+  
+}
+.info_get label{
+  margin-left: 4%;
+  font-size: 13px;
+}
+box-icon{
+  position: absolute;
+  top:8%;
+  left: 90%;
+  
+}
+
+.call{
+  position: absolute;
+  top:26%;
+  left: 90%;
+}
+.user{
+  position: absolute;
+  top:44%;
+  left: 90%;
+  
+}
+.pass{
+  position: absolute;
+  top:62%;
+  left: 90%;
+  
+}

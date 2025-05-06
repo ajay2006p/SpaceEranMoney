@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Home</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+  <!-- Top Header -->
+  <div class="head">
+    <a href="profile.html"><img id="profileImage"src="Pro1.png" alt="Profile"></a>
+    <p id="username">  </p>
+    <h3 style="color:red">Your Balance ₹<span id="balance"></span></h3>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Header Section -->
+    <div class="header">
+      <p id="headerBalance" style="color:red"></p>
+      <h2>Your Balance</h2>
+    </div>
+
+    <!-- Embedded Video -->
+    <div class="video">
+      <iframe width="320" height="170"
+        src="https://www.youtube.com/embed/E28xcA07f9w?si=Bqt_QyjyrtGDxfgg"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="buttons">
+      <div class="icons"><a href="LinkPage.html"><i class='bx bx-dollar-circle'></i><p>Earn</p></a></div>
+      <div class="icons"><a href="profile.html"><i class='bx bx-user-circle'></i><p>Profile</p></a></div>
+      <div class="icons"><a href="#play" onclick="alert('Coming soon')"><i class='bx bx-play-circle'></i><p>Play</p></a></div>
+      <div class="icons"><a href="withdrawal.html"><i class='bx bx-wallet-alt'></i><p>Withdraw</p></a></div>
+      <div class="icons"><a href="#chat" onclick="alert('Contact support')"><i class='bx bx-chat'></i><p>Chat us</p></a></div>
+      <div class="icons"><a href="vido.html"><i class='bx bxs-caret-right-circle'></i><p>Videos</p></a></div>
+      <div class="icons"><a href="#ads" onclick="alert('Ads section')"><i class='bx bx-movie-play'></i><p>Ads</p></a></div>
+      <div class="icons"><a href="#donate" onclick="alert('Donate')"><i class='bx bx-leaf'></i><p>Donate</p></a></div>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="footer">
+      <div class="icon"><i class='bx bx-home'></i><p>Home</p></div>
+      <div class="icon"><i class='bx bx-money'></i><p>Earn</p></div>
+      <div class="icon"><i class='bx bx-share-alt bx-flip-vertical'></i><p>Refers</p></div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database-compat.js"></script>
+
+  <script>window.onload = function() {
+  const storedProfileImg = localStorage.getItem("profileImg");
+  if (storedProfileImg) {
+    document.getElementById("profileImage").src = storedProfileImg;
+  }
+};
+  
+    // Firebase Configuration (अपना config यहाँ लगाएं)
+    const firebaseConfig = {
+      // आपका Firebase config object
+      apiKey: "AIzaSyBOASGBeUx9WtencQSpHxIuVYROCIg5yGg",
+      authDomain: "eran-money-34265.firebaseapp.com",
+      databaseURL: "https://eran-money-34265-default-rtdb.firebaseio.com",
+      projectId: "eran-money-34265",
+      storageBucket: "eran-money-34265.appspot.com",
+      messagingSenderId: "823464354489",
+      appId: "1:823464354489:web:72ae96a89d0356b721f168"
+    };
+
+    // Initialize Firebase App (अगर पहले से initialize नहीं किया है)
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    // Firebase Auth और Database references
+    const auth = firebase.auth();
+    const database = firebase.database();
+
+    // Auth state change listener
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        // सही database path के साथ user data प्राप्त करें
+        const userRef = database.ref("users/" + user.uid);
+
+        userRef.on("value", snapshot => {
+          const data = snapshot.val();
+          if (data) {
+            // UI में डेटा अपडेट करें
+            document.getElementById("username").textContent = data.name || "User";
+
+            // यदि balance number type नहीं है, तो उसे कन्वर्ट कर लें
+            const numBalance = Number(data.balance);
+            const balance = numBalance.toFixed(2);
+            document.getElementById("balance").textContent = balance;
+            document.getElementById("headerBalance").textContent = `₹${balance}`;
+          }
+        });
+
+      } else {
+        window.location.href = "index.html";
+      }
+    });
+  </script>
+</body>
+</html>

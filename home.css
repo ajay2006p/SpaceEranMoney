@@ -1,0 +1,212 @@
+/* Mobile-first reset and basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+.head{
+  font-size: 15px;
+  position: absolute;
+  left: 13.5px;
+  top: 8px;
+  font-weight: bold;
+  width: 332px;
+  height: 48px;
+  box-shadow: 1px 0px 9px 5px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  background-color:#a259ff;
+  
+
+}
+.head p{
+  color: black;
+  font-size: 19px;
+  position: absolute;
+  left: 50px;
+  top: 4px;
+  color: white;
+}
+.head h3{
+  color: black;
+  font-size: 12px;
+  position: absolute;
+  left: 51px;
+  top: 24px;
+  font-weight: lighter;
+  color: white;
+}
+/* Container will fill the viewport height */
+.container {
+  min-height: 97vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/* Header styling */
+.header {
+  
+  
+  height: 158px;
+  width: 320px;
+  background-color: #fff;
+  border-radius: 35px;
+  box-shadow: 1px 5px 10px rgba(0,0,0,0.1);
+  background-image: url("images/img6.png");
+  background-size: cover;
+  margin-left: 10px;
+  margin-top: 40px;
+
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  
+}
+
+.bal{
+  margin-top: 3px;
+}
+
+.header p {
+  font-size: 40px;
+  color: #ffffff;
+  position: absolute;
+  left: 100px;
+  top: 120px;
+  font-weight: bold;
+
+}
+.header h2{
+  font-size: 15px;
+  color: rgb(255, 246, 246);
+  position: absolute;
+  left: 126px;
+  top: 105px;
+}
+
+/* Footer styling - Mobile optimized */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  height: 48px;
+  width: 340px;
+  border-top: 2px solid #ddd;
+  border-radius: 20px;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 1px;
+  background-color: #a259ff;
+}
+
+/* Icon styling in footer */
+.footer .icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  color: #f9f3f3;
+  opacity: 82%;
+  
+}
+
+.footer .icon i {
+  font-size: 1.8rem;
+  margin-bottom: 0px;
+}
+
+/* Optional: Hover/Active effects for touch feedback */
+.footer .icon:active {
+  opacity: 0.6;
+}
+
+
+/* Agar aapko larger mobile screens ke liye thoda sa adjustment karna ho to media query add kar sakte hain */
+@media screen and (min-width: 480px) {
+  .header h2 {
+    font-size: 2rem;
+  }
+  
+  .footer .icon i {
+    font-size: 2rem;
+  }
+}
+
+h1{
+  position: absolute;
+  top: 187px;
+  font-size: 20px;
+  left: 118px;
+  font-weight:700;
+  font-family: Arial, Helvetica, sans-serif;
+  color: aliceblue;
+
+}
+
+iframe{
+  border-radius: 20px;
+  position: absolute;
+  top: 237px;
+  left: 20px;
+  box-shadow: 1px 5px 10px rgba(0,0,0,0.1);
+}
+.buttons{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 420px;
+  left: 20px;
+  height: 150px;
+  width: 320px;
+  box-shadow: 1px 5px 10px rgba(0,0,0,0.1);
+  border-radius: 30px;
+  text-decoration: none;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.buttons .icons i{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  margin: 2px;
+  margin-top: 10px;
+  text-decoration: none;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  color: black;
+}
+.icons p{
+  font-size: 10px;
+  margin: 18px;
+  margin-top: 8px;
+}
+
+
+img{
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  top: 4px;
+  border: white solid 2px;
+}
+.buttons .icons:active {
+  opacity: 0.6;
+}
